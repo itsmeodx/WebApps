@@ -2,6 +2,8 @@
 
 Learning JavaScript by actually building stuff instead of just watching tutorials.
 
+**[Check it out live →](https://itsmeodx.github.io/JavaScriptPractice/)**
+
 ## What I've Built
 
 **Portal** - A simple landing page to keep all my projects organized in one place. Way better than digging through folders to find things.
@@ -10,7 +12,7 @@ Learning JavaScript by actually building stuff instead of just watching tutorial
 
 ## Try It Out
 
-Just clone and open the HTML files. No setup required.
+You can [try it live](https://itsmeodx.github.io/JavaScriptPractice/) or run it locally:
 
 ```bash
 git clone https://github.com/itsmeodx/JavaScriptPractice.git
