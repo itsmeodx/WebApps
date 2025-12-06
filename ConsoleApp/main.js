@@ -3,15 +3,23 @@ const consoleInput = document.querySelector('.consoleInput');
 const previewDiv = document.querySelector('.preview');
 const history = JSON.parse(localStorage.getItem('consoleHistory')) || [];
 
-const originalLog = console.log;
+const consoleLog = console.log;
+const consoleClear = console.clear;
+
+// Overrides
 console.log = function (...args) {
+	consoleLog(args);
 	return args.map((arg) => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
+};
+console.clear = function () {
+	consoleClear();
+	consoleHistory.innerHTML = '';
 };
 
 let index = history.length;
 let output = '', input = '';
 
-originalLog("index:", index);
+consoleLog("index:", index);
 
 function addHistory() {
 	history.forEach((entry) => {
@@ -117,7 +125,7 @@ function handleInput(event) {
 	}
 
 	updatePreview();
-	originalLog("index:", index);
+	consoleLog("index:", index);
 }
 
 consoleInput.addEventListener('keyup', handleInput);

@@ -1,5 +1,7 @@
 body {
 	margin: 0;
+	/* Prevent iOS zoom on input focus */
+	-webkit-text-size-adjust: 100%;
 }
 
 .App * {
@@ -17,6 +19,8 @@ body {
 .consoleHistory {
 	flex-grow: 1;
 	overflow-y: auto;
+	/* Smooth scrolling on mobile */
+	-webkit-overflow-scrolling: touch;
 }
 
 .historyInput, .historyOutput {
@@ -52,6 +56,8 @@ body {
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	background: rgba(255, 255, 255, 0.05);
 	transition: background 0.3s;
+	/* Mobile keyboard support */
+	padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
 
 .consoleInput::placeholder {
@@ -71,4 +77,26 @@ body {
 	background: rgba(255, 255, 255, 0.1);
 	border: none;
 	outline: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+	.historyInput, .historyOutput {
+		padding: 8px 12px;
+		font-size: 14px;
+	}
+
+	.consoleInput {
+		padding: 12px;
+		font-size: 16px; /* Prevent iOS zoom */
+	}
+
+	.preview {
+		padding: 8px 12px;
+	}
+
+	/* Better tap targets */
+	.historyInput:active, .historyOutput:active {
+		background: rgba(255, 255, 255, 0.15);
+	}
 }
